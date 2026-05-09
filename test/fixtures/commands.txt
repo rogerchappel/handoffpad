@@ -1,0 +1,3 @@
+pass: npm test # 12 tests passed
+fail: npm run lint # lint config missing
+unknown: npm run smoke

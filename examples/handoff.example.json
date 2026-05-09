@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "handoffpad.v1",
+  "createdAt": "2026-05-09T00:00:00.000Z",
+  "task": {
+    "source": "docs/TASKS.md",
+    "summary": "HandoffPad Tasks"
+  },
+  "git": {
+    "root": "~/Developer/my-opensource/handoffpad",
+    "since": "HEAD~1",
+    "head": "abc1234",
+    "branch": "main",
+    "changedFiles": [
+      {
+        "path": "src/cli.ts",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 2
+      }
+    ]
+  },
+  "commands": [
+    {
+      "command": "npm test",
+      "status": "pass",
+      "summary": "unit tests passed"
+    }
+  ],
+  "notes": ["Bundle created before handing work to the next agent."],
+  "omissions": ["No external posting was performed."],
+  "nextSteps": ["Run validation before continuing."],
+  "redactions": ["home-path"]
+}

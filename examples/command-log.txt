@@ -1,0 +1,3 @@
+pass: npm test # unit tests passed
+pass: npm run check # typecheck passed
+unknown: npm run smoke # smoke not run yet
