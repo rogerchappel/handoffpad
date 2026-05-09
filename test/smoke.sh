@@ -23,9 +23,9 @@ cat > commands.txt <<'LOG'
 pass: npm test # fixture tests passed
 LOG
 
-node "$ROOT/dist/cli.js" create --task TASK.md --since HEAD --commands commands.txt --output handoff.json --note "smoke note" --next-step "continue safely" --omission "no remote checks"
-node "$ROOT/dist/cli.js" validate handoff.json
-node "$ROOT/dist/cli.js" render handoff.json --format markdown --output handoff.md
+node "$ROOT/dist/src/cli.js" create --task TASK.md --since HEAD --commands commands.txt --output handoff.json --note "smoke note" --next-step "continue safely" --omission "no remote checks"
+node "$ROOT/dist/src/cli.js" validate handoff.json
+node "$ROOT/dist/src/cli.js" render handoff.json --format markdown --output handoff.md
 
 grep -q "Smoke task" handoff.md
 if grep -q "smokesecret" handoff.json; then
