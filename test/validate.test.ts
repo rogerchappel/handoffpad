@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { hasErrors, readBundle, validateBundle } from "../src/validate.js";
 
-const fixture = new URL("../examples/handoff.example.json", import.meta.url).pathname;
+const fixture = "examples/handoff.example.json";
 
 test("accepts a complete bundle fixture", async () => {
   const issues = validateBundle(await readBundle(fixture));

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readBundle } from "../src/validate.js";
 import { renderMarkdown } from "../src/render.js";
 
-const fixture = new URL("../examples/handoff.example.json", import.meta.url).pathname;
+const fixture = "examples/handoff.example.json";
 
 test("renders markdown handoff with commands and next steps", async () => {
   const markdown = renderMarkdown(await readBundle(fixture));

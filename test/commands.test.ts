@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { parseCommandLog } from "../src/commands.js";
 
-const fixture = new URL("./fixtures/commands.txt", import.meta.url).pathname;
+const fixture = "test/fixtures/commands.txt";
 
 test("parses command logs with statuses and summaries", async () => {
   const parsed = await parseCommandLog(fixture);

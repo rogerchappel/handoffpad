@@ -18,7 +18,9 @@ export function validateBundle(bundle: HandoffBundle): ValidationIssue[] {
   if (!Array.isArray(bundle.omissions) || bundle.omissions.length === 0) issues.push(warning("No omissions were recorded; confirm nothing was intentionally left out."));
   if (!Array.isArray(bundle.redactions)) issues.push(error("redactions must be an array."));
 
-  const failedCommands = bundle.commands.filter((command) => command.status === "fail");
+  const failedCommands = Array.isArray(bundle.commands)
+    ? bundle.commands.filter((command) => command.status === "fail")
+    : [];
   for (const command of failedCommands) {
     issues.push(warning(`Command marked failed: ${command.command}`));
   }
