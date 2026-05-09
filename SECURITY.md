@@ -1,58 +1,36 @@
 # Security Policy
 
-## Supported Versions
+HandoffPad is local-first handoff tooling. It does not run a service, collect telemetry, or post bundles anywhere by itself.
 
-Replace this section with the supported versions for `handoffpad`.
+## Supported versions
 
-Example:
+Security fixes target the latest released `0.x` version until a stable `1.0` policy exists.
 
-```md
-| Version | Supported |
-| --- | --- |
-| .x | Yes |
-| < .0 | No |
-```
+## Reporting a vulnerability
 
-If the project does not publish versioned releases yet, say that clearly.
+Please report suspected vulnerabilities through GitHub Security Advisories for `rogerchappel/handoffpad` when available, or open a minimal issue that avoids publishing secrets or exploit details.
 
-## Reporting a Vulnerability
+## Redaction model
 
-Please do not report suspected vulnerabilities in public issues, pull requests, or discussions.
+HandoffPad redacts:
 
-Ask maintainers for the private security reporting path before sharing details.
+- Local home directory paths (`/Users/name` → `~`)
+- GitHub token-like values
+- AWS access key-like values
+- Bearer tokens
+- Simple `token=`, `secret=`, `password=`, and `api_key=` assignments
 
-If no private reporting path exists yet, ask maintainers through public project channels for a private reporting path. Do not include exploit details, secrets, personal data, or sensitive technical details in public messages.
+This is a safety net, not a guarantee. Always review `handoff.json` before sharing it outside your machine.
 
-## What to Include
+## Out of scope
 
-When a private reporting path is available, include:
+- HandoffPad does not sandbox arbitrary commands.
+- HandoffPad does not verify that command logs are truthful.
+- HandoffPad does not upload, publish, or message external systems.
 
-- A clear description of the issue.
-- Affected versions, files, packages, workflows, or configuration.
-- Steps to reproduce, proof of concept, or attack scenario when safe to share.
-- Potential impact.
-- Suggested mitigation, if known.
+## Safe sharing checklist
 
-## Response Expectations
-
-Maintainers review good-faith reports as capacity allows.
-
-Do not imply paid support, guaranteed response times, guaranteed fixes, or service-level agreements unless `handoffpad` explicitly provides them.
-
-## Scope
-
-In scope:
-
-- Vulnerabilities in handoffpad.
-- Insecure default configuration shipped by this project.
-- CI, release, or dependency guidance maintained by this project.
-
-Out of scope:
-
-- General support requests.
-- Requests for guaranteed maintenance timelines.
-- Issues in unrelated downstream projects.
-
-## Disclosure
-
-Coordinate disclosure with maintainers before publishing vulnerability details.
+1. Run `handoffpad validate handoff.json`.
+2. Inspect warnings, especially failed commands.
+3. Search the bundle for secrets specific to your environment.
+4. Prefer rendered Markdown for chat when the raw diff is not needed.
