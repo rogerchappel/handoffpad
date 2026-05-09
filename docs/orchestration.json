@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "handoffpad.orchestration.v1",
+  "roles": [
+    {
+      "name": "builder",
+      "responsibility": "Create a local bundle from task, git context, commands, notes, omissions, and next steps."
+    },
+    {
+      "name": "reviewer",
+      "responsibility": "Validate the bundle and inspect warnings before trusting it."
+    },
+    {
+      "name": "continuation",
+      "responsibility": "Render the bundle, verify reality locally, and continue safely."
+    }
+  ],
+  "commands": {
+    "create": "handoffpad create --task docs/TASKS.md --since HEAD~3 --commands command-log.txt --output handoff.json",
+    "validate": "handoffpad validate handoff.json",
+    "render": "handoffpad render handoff.json --format markdown --output handoff.md"
+  },
+  "safety": {
+    "localFirst": true,
+    "externalPosting": false,
+    "defaultRedactions": ["home-path", "github-token", "aws-access-key", "bearer-token", "generic-secret-assignment"],
+    "requiresExplicitOmissions": true
+  }
+}
