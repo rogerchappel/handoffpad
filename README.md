@@ -69,3 +69,14 @@ bash scripts/validate.sh
 ## Example output
 
 See [`examples/handoff.example.json`](examples/handoff.example.json) and [`docs/ORCHESTRATION.md`](docs/ORCHESTRATION.md).
+
+## Development
+
+Run the same local checks used for release readiness before opening changes:
+
+- `npm run check`
+- `npm test`
+- `npm run build`
+- `npm run smoke`
+- `npm run package:smoke`
+- `npm run release:check`
