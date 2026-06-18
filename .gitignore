@@ -1,10 +1,5 @@
 node_modules/
+tmp/
 dist/
 coverage/
-*.tgz
-.env
-.env.*
-!.env.example
 .DS_Store
-handoff.json
-handoff.md

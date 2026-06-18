@@ -1,63 +1,34 @@
 {
-  "name": "@rogerchappel/handoffpad",
+  "name": "handoffpad",
   "version": "0.1.0",
-  "description": "Local-first agent handoff bundle builder.",
-  "type": "module",
+  "description": "Local-first agent handoff bundle builder with redaction and validation.",
+  "license": "MIT",
+  "author": "Roger Chappel",
+  "type": "commonjs",
   "bin": {
-    "handoffpad": "./dist/src/cli.js"
-  },
-  "main": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/src/index.d.ts",
-      "import": "./dist/src/index.js"
-    }
+    "handoffpad": "bin/handoffpad.js"
   },
   "files": [
-    "dist/src",
-    "README.md",
-    "LICENSE",
-    "SECURITY.md",
-    "CHANGELOG.md",
-    "CONTRIBUTING.md"
+    "bin",
+    "src",
+    "docs",
+    "SKILL.md",
+    "README.md"
   ],
   "scripts": {
-    "build": "tsc",
-    "check": "tsc --noEmit",
-    "typecheck": "npm run check",
-    "test": "node --test dist/test/*.test.js",
-    "pretest": "npm run build",
-    "smoke": "npm run build && bash test/smoke.sh",
-    "package:smoke": "npm pack --dry-run",
-    "release:check": "npm test && npm run check && npm run build && npm run smoke && npm run package:smoke"
+    "test": "node --test test/*.test.js",
+    "check": "node scripts/check.js",
+    "build": "node scripts/build.js",
+    "smoke": "node bin/handoffpad.js create --task fixtures/task.md --log fixtures/commands.log --output tmp/smoke-handoff.json && node bin/handoffpad.js validate tmp/smoke-handoff.json && node bin/handoffpad.js render tmp/smoke-handoff.json --format markdown"
   },
   "keywords": [
     "agent",
     "handoff",
-    "cli",
     "local-first",
     "redaction",
-    "typescript"
+    "cli"
   ],
-  "author": "Roger Chappel",
-  "license": "MIT",
   "engines": {
-    "node": ">=20"
-  },
-  "dependencies": {
-    "commander": "^12.1.0"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.2",
-    "typescript": "^5.7.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rogerchappel/handoffpad.git"
-  },
-  "bugs": {
-    "url": "https://github.com/rogerchappel/handoffpad/issues"
-  },
-  "homepage": "https://github.com/rogerchappel/handoffpad#readme"
+    "node": ">=18"
+  }
 }
