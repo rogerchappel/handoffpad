@@ -19,7 +19,9 @@
     "test": "node --test test/*.test.js",
     "check": "node scripts/check.js",
     "build": "node scripts/build.js",
-    "smoke": "node bin/handoffpad.js create --task fixtures/task.md --log fixtures/commands.log --output tmp/smoke-handoff.json && node bin/handoffpad.js validate tmp/smoke-handoff.json && node bin/handoffpad.js render tmp/smoke-handoff.json --format markdown"
+    "smoke": "node bin/handoffpad.js create --task fixtures/task.md --log fixtures/commands.log --output tmp/smoke-handoff.json && node bin/handoffpad.js validate tmp/smoke-handoff.json && node bin/handoffpad.js render tmp/smoke-handoff.json --format markdown",
+    "package:smoke": "npm pack --dry-run",
+    "release:check": "npm run check && npm test && npm run build && npm run smoke && npm run package:smoke"
   },
   "keywords": [
     "agent",
@@ -30,5 +32,9 @@
   ],
   "engines": {
     "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogerchappel/handoffpad.git"
   }
 }
