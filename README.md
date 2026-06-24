@@ -4,6 +4,14 @@ HandoffPad builds compact, redacted agent handoff bundles from local task notes,
 
 ## Quick Start
 
+Install the published CLI:
+
+```bash
+npm install -g handoffpad
+```
+
+For local development:
+
 ```bash
 npm install
 npm run smoke
@@ -11,6 +19,15 @@ node bin/handoffpad.js create --task fixtures/task.md --log fixtures/commands.lo
 node bin/handoffpad.js validate tmp/handoff.json
 node bin/handoffpad.js render tmp/handoff.json --format markdown
 ```
+
+Run the full release-readiness gate before publishing or promotion:
+
+```bash
+npm run release:check
+```
+
+The release check runs the project check, tests, build validation, CLI smoke
+flow, and dry-run npm package review.
 
 ## What It Captures
 
