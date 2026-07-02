@@ -44,3 +44,22 @@ HandoffPad is local-first. It does not send data to external services, create re
 ## Limitations
 
 V1 uses deterministic text extraction instead of LLM summarisation. It is best for concise task files and command logs. Review generated bundles before pasting them into external systems.
+
+## Usage
+
+Start by checking the CLI contract locally:
+
+```sh
+npx handoffpad --help
+handoffpad --help
+```
+
+Run the same command against a small fixture or sample input before using it in CI or an agent workflow.
+
+## Local Verification
+
+Run the committed test suite before opening a PR:
+
+```sh
+npm test
+```
