@@ -27,7 +27,7 @@ function parseArgs(argv) {
 async function main() {
   const { command, args } = parseArgs(process.argv.slice(2));
 
-  if (!command || command === "help" || args.help) {
+  if (!command || command === "help" || command === "--help" || command === "-h" || args.help) {
     process.stdout.write(`handoffpad
 
 Usage:
